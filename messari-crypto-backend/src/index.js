@@ -15,7 +15,6 @@ axios.defaults.headers.get['x-rapid-api-key'] = apiKey;
 
 io.on('connection', (socket) => {
   console.log('Connected');
-  getMarketData(io, logger, axios, 'market:data');
 
   socket.on('investment:anual', (data) => {
     calculateInvestmentsAnualReturns(socket, axios, data);
@@ -23,7 +22,7 @@ io.on('connection', (socket) => {
 });
 
 // Send market data automatically thru websockets
-getMarketDataInterval(io, logger, axios, 'market:data', 5000);
+getMarketDataInterval(io, logger, axios, 'market:data', 10000);
 
 /**
 * Exports express
